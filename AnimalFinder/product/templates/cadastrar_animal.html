@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport"
+			  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Cadastro</title>
+	</head>
+    <body>
+        
+        
+        <h1>Cadastro de animal desaparecido</h1>
+        
+
+        {% load static %}
+		<img class="container_kermit_img" src="{% static 'images/viralata_1.jpg' %}" alt="Kermit the frog" width="300">
+       
+        <form method="POST">
+			{% csrf_token %}
+			{{ form }}
+			<br>
+			<button type="submit">Save</button>
+		</form>
+
+
+		{% if product %}
+			<a href="{% url 'delete_product' product.id %}">Delete</a>
+		{% endif %}
+    </body>
+</html>

@@ -1,0 +1,38 @@
+body{
+    background-color: #565;    
+}
+
+h1{
+    color: red;
+    text-shadow: 3px 3px 5px black;
+    text-align: center;
+}
+
+html{
+    margin: 10px 50px 10px 50px;
+    word-spacing: 5px;
+    font-family: cursive;
+    font-size: 20px;
+}
+
+.container{
+    margin: 10px 30px 10px 20px;
+    overflow: auto;
+}
+
+.container_kermit_img{
+    float: right;
+    clear: right;
+    padding: 5px 5px;
+    border-color: black;
+    border-style: solid; 
+}
+
+.container_text{
+   vertical-align: middle;  
+}
+
+p{  
+    text-align: justify;
+}
+
