@@ -1,0 +1,43 @@
+body{
+    background-color: #cfc;    
+}
+
+h1{
+    color: red;
+    text-shadow: 3px 3px 5px black;
+    text-align: center;
+}
+
+html{
+    margin: 10px 50px 10px 0px;
+    font-family: cursive;
+}
+
+li {
+  display: inline;
+}
+
+a {
+  display: block;
+}
+
+.menu_principal{
+	background-color: red;
+	background-image: linear-gradient(to bottom right, #28b3bf, #28b3bf); 
+	overflow:auto;
+	display:block;
+}
+
+.cadastrar_animal{
+	float: left;
+	width: 60%;
+}
+
+.login{
+	float: right;
+	width: 20%;
+}
+.cadastrar_dono{
+	float: right;
+	width: 20%;
+} 

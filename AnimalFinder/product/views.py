@@ -10,7 +10,7 @@ def pagina_principal(request):
     
     
 def cadastrar_animal(request):
-    form = AnimalForm(request.POST or None)
+    form = AnimalForm(data=request.POST, files=request.FILES)
 
     if form.is_valid():
         form.save()

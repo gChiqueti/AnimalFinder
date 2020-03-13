@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Animais cadastrados</title>
+        <title>Login</title>
 		
-		{% load static %}
-        <link href="{% static 'pagina_principal.css' %}"  rel="stylesheet">
-        
+		
         
     </head>
     <body>
@@ -18,15 +16,7 @@
 		</ul>
 		
 		{% for animal in animais_cadastrados %}
-			{% if animal.status == 1 %}
-				<p>{{animal.nome}}</p>
-			
-				{% if animal.foto%}
-					{% load static %}
-					<img src="{{ animal.foto.url }}" width=50%>
-				{% endif %}
-				
-			{% endif %}	
+			<p>{{animal.nome}}</p>
         {% endfor %}
         
         

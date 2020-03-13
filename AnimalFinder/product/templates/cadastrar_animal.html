@@ -8,7 +8,7 @@
 		<title>Cadastro</title>
 		
 		{% load static%}
-        <link href="{% static 'css/cadastrar_animal.css' %}"  rel="stylesheet">
+        <link href="{% static 'cadastrar_animal.css' %}"  rel="stylesheet">
 		
 		
 	</head>
@@ -22,10 +22,10 @@
 		<img class="container_kermit_img" src="{% static 'images/viralata_1.jpg' %}" alt="Kermit the frog" width="300">
 		<br><br><br>
         
-		<form method="POST">
+		<form method="POST" enctype="multipart/form-data">
 			{% csrf_token %}
 			{{ form }}
-			<br>
+			
 			<button type="submit">Cadastrar</button>
 		</form>
 

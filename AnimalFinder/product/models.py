@@ -12,7 +12,7 @@ class Dono(models.Model):
         return self.nome
     
 class Animal(models.Model):
-    foto  = models.ImageField(upload_to='profile_image', blank=True)
+    foto  = models.ImageField(blank=True)
     nome  = models.CharField(max_length=100, blank=True)
     idade = models.CharField(max_length=3, blank=True)
     cidade_desaparecimento = models.CharField(max_length=50, blank=True)
