@@ -15,17 +15,14 @@
 
         {% load static %}
 		<img class="container_kermit_img" src="{% static 'images/viralata_1.jpg' %}" alt="Kermit the frog" width="300">
-       
-        <form method="POST">
+		<br><br><br>
+        
+		<form method="POST">
 			{% csrf_token %}
 			{{ form }}
 			<br>
-			<button type="submit">Save</button>
+			<button type="submit">Cadastrar</button>
 		</form>
 
-
-		{% if product %}
-			<a href="{% url 'delete_product' product.id %}">Delete</a>
-		{% endif %}
     </body>
 </html>

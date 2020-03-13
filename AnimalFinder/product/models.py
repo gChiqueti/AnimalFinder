@@ -12,11 +12,11 @@ class Dono(models.Model):
         return self.nome
     
 class Animal(models.Model):
-    foto  = models.ImageField(upload_to='profile_image', blank=False)
-    nome  = models.CharField(max_length=100, blank=False)
+    foto  = models.ImageField(upload_to='profile_image', blank=True)
+    nome  = models.CharField(max_length=100, blank=True)
     idade = models.CharField(max_length=3, blank=True)
-    cidade_desaparecimento = models.CharField(max_length=50, blank=False)
-    estado_desaparecimento = models.CharField(max_length=50, blank=False)
+    cidade_desaparecimento = models.CharField(max_length=50, blank=True)
+    estado_desaparecimento = models.CharField(max_length=50, blank=True)
     status = models.IntegerField(choices=STATUS_ANIMAL, default=1)
     
     def __str__(self):
