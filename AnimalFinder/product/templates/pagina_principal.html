@@ -9,7 +9,7 @@
         
     </head>
     <body>
-        <h1>PAGINA PRINCIPAL</h1>
+        <h1>PAGINA PRINCIPALA</h1>
         
 		<ul class="menu_principal">
 			<li><a class="cadastrar_animal" href='cadastrar_animal'>Cadastrar animal perdido</a></li>
@@ -19,14 +19,30 @@
 		
 		{% for animal in animais_cadastrados %}
 			{% if animal.status == 1 %}
-				<p>{{animal.nome}}</p>
 			
-				{% if animal.foto%}
-					{% load static %}
-					<img src="{{ animal.foto.url }}" width=50%>
-				{% endif %}
+				<div class="umAnimalPerdido">
+					
+					<div class="imagem">
+						{% if animal.foto%}
+							{% load static %}
+							<img src="{{ animal.foto.url }}" width=50%>
+						{% endif %}
+					</div>
+					
+					<div class="textos">
+						<p>Nome: {{animal.nome}}</p>
+						<p>Idade: {{animal.idade}}</p>
+						<p>Cidade: {{animal.cidade_desaparecimento}}</p>
+						<p>Estado: {{animal.estado_desaparecimento}}</p>
+						<p>Status: {{animal.status}}</p>
+						<button>Encontrei</button>
+					</div>
+					
+				</div>
 				
 			{% endif %}	
+			
+			<br>
         {% endfor %}
         
         
