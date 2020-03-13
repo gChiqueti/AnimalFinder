@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Dono, Animal
-from .forms import AnimalForm
+from .forms import AnimalForm, DonoForm
 
 # Create your views here.
 
@@ -17,3 +17,24 @@ def cadastrar_animal(request):
         return redirect('pagina_principal')
 
     return render(request, 'cadastrar_animal.html', {'form': form})
+
+
+def cadastrar_dono(request):
+    form = DonoForm(request.POST or None)
+
+    if form.is_valid():
+        form.save()
+        return redirect('pagina_principal')
+
+    return render(request, 'cadastrar_dono.html', {'form': form})
+
+def login(request):
+    form = DonoForm(request.POST or None)
+
+    if form.is_valid():
+        form.save()
+        return redirect('pagina_principal')
+
+    return render(request, 'cadastrar_dono.html', {'form': form})
+
+    

@@ -2,14 +2,24 @@
 <html>
     <head>
         <title>Animais cadastrados</title>
-        <link rel="stylesheet" href="style_index.css">
+		
+		{% load static%}
+        <link href="{% static 'css/pagina_principal.css' %}"  rel="stylesheet">
         
         
     </head>
     <body>
         <h1>PAGINA PRINCIPAL</h1>
         
-        
+		<div class="menu">
+			<a href='cadastrar_animal'>Cadastrar animal perdido</a>
+			<a href='login'>Login</a>
+			<a href='cadastrar_dono'>Registrar</a>
+		</div>
+		
+		{% for animal in animais_cadastrados %}
+			<p>{{animal.nome}}</p>
+        {% endfor %}
         
         
        
