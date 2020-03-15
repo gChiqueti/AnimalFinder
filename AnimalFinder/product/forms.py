@@ -11,7 +11,8 @@ class AnimalForm(forms.ModelForm):
                   'idade',
                   'cidade_desaparecimento',
                   'estado_desaparecimento',
-                  'status']
+                  'status',
+                  'informacoes_extras']
                   
                   
 class ContatoForm(forms.ModelForm):

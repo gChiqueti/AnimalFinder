@@ -6,7 +6,7 @@ h1{
 
 html{
 	margin: 0px;
-	
+	background-color: #63adab;
 	
 }
 
@@ -19,6 +19,12 @@ table, th, td {
 }
 
 
+
+/* .navbar{
+	position: fixed;
+	top: 0; 
+	width: 100%; 
+} */
 
 ul {
   list-style-type: none;
@@ -47,7 +53,7 @@ li p {
 
 /* Change the link color to #111 (black) on hover */
 li a:hover {
-  background-color: #111;
+  background-color: #63adab;
 }
 
 
@@ -56,6 +62,7 @@ li a:hover {
 	border-style: solid;
 	border-color: black;
 	height: 250px;
+	background-color: #63adab;
 }
 
 .imagem{
@@ -68,7 +75,7 @@ li a:hover {
 	display:inline-block;
 	width: 50%;
 	float:rigth;
-	background-color: yellow;
+	
 }
 
 

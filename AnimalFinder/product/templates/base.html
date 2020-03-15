@@ -2,28 +2,31 @@
 <html>
 
 <head>
-	
-	{% if request.user.is_authenticated %}
-		
-		<ul>
-			<li><p>Bem vindo, {{request.user.username}}</p></li>
-			<li><a href="{% url 'pagina_principal' %}">Home</a></li>
-			<li><a href="{% url 'logout' %}">Logout</a></li>
-			<li><a href="{% url 'meus_animais' %}">Meus animais</a></li>
-		</ul>
-		
-	{% else %}
-		<ul>
-			<li><a href="{% url 'pagina_principal' %}">Home</a></li>
-			<li><a href="{% url 'cadastrar_dono' %}">Register</a></li>
-			<li><a href="{% url 'login' %}">Login</a></li>
-		</ul>
-		
-	
-	{% endif %}
-	
 	{% load static %}
 	<link href="{% static 'style.css' %}"  rel="stylesheet">
+	
+	
+	
+	<div class="navbar">
+		{% if request.user.is_authenticated %}
+			
+			<ul>
+				<li><p>Bem vindo, {{request.user.username}}</p></li>
+				<li><a href="{% url 'pagina_principal' %}">Home</a></li>
+				<li><a href="{% url 'logout' %}">Logout</a></li>
+				<li><a href="{% url 'meus_animais' %}">Meus animais</a></li>
+			</ul>
+			
+		{% else %}
+			<ul>
+				<li><a href="{% url 'pagina_principal' %}">Home</a></li>
+				<li><a href="{% url 'cadastrar_dono' %}">Register</a></li>
+				<li><a href="{% url 'login' %}">Login</a></li>
+			</ul>
+			
+		{% endif %}
+	<div class="navbar">
+	
 	
 	
 	{% block css %}
