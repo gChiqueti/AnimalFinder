@@ -36,4 +36,27 @@
 			</div>
 		{% endif %}	
 	{% endfor %}
+	
+	
+	{% if animais_cadastrados.has_other_pages %}
+		  <ul class="pagination">
+			{% if animais_cadastrados.has_previous %}
+			  <li><a href="?page={{ animais_cadastrados.previous_page_number }}">&laquo;</a></li>
+			{% else %}
+			  <li class="disabled"><span>&laquo;</span></li>
+			{% endif %}
+			{% for i in animais_cadastrados.paginator.page_range %}
+			  {% if animais_cadastrados.number == i %}
+				<li class="active"><span>{{ i }} <span class="sr-only">(Atual)</span></span></li>
+			  {% else %}
+				<li><a href="?page={{ i }}">{{ i }}</a></li>
+			  {% endif %}
+			{% endfor %}
+			{% if animais_cadastrados.has_next %}
+			  <li><a href="?page={{ animais_cadastrados.next_page_number }}">&raquo;</a></li>
+			{% else %}
+			  <li class="disabled"><span>&raquo;</span></li>
+			{% endif %}
+		  </ul>
+	{% endif %}
 {% endblock content %}

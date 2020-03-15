@@ -5,11 +5,20 @@ from .forms import AnimalForm, RegistrationForm, AuthenticationForm, ContatoForm
 from django.contrib.auth import login, authenticate, logout
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 
 def pagina_principal(request):
     animais_cadastrados = Animal.objects.all()
+    page = request.GET.get('page', 1)
+    paginator = Paginator(animais_cadastrados, 8)
+    try:
+        animais_cadastrados = paginator.page(page)
+    except PageNotAnInteger:
+        animais_cadastrados = paginator.page(1)
+    except EmptyPage:
+        animais_cadastrados = paginator.page(paginator.num_pages)
     return render(request, 'pagina_principal.html', {'animais_cadastrados': animais_cadastrados})
     
     
