@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Dono, Animal
-from .forms import AnimalForm, RegistrationForm, AuthenticationForm
+from .forms import AnimalForm, RegistrationForm, AuthenticationForm, ContatoForm
+from .forms import AnimalForm, RegistrationForm, AuthenticationForm, ContatoForm
 from django.contrib.auth import login, authenticate, logout
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -75,6 +76,25 @@ def animal_delete(request, id=None):
         context = {}
         context['user'] = animal
         return render(request, 'deletar_animal.html', context)
+
+
+def animal_encontrado(request, id=None):
+    context = {}
+    animal = get_object_or_404(Animal, id=id)
+    if request.method == 'POST':
+        form = ContatoForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.animal = animal
+            instance.save()    
+            return redirect('pagina_principal')
+        else:
+            context['form'] = form
+    else:
+        context['form'] = ContatoForm(request.POST)
+    return render(request, 'animal_encontrado.html', context)
+
+
 
 def login_view(request):
 
