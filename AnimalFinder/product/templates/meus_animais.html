@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport"
+			  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Cadastro</title>
+		
+		{% load static %}
+        <link href="{% static 'cadastrar_animal.css' %}"  rel="stylesheet">
+		
+		
+	</head>
+    <body>
+        <a href="{% url 'cadastrar_animal' %}">Cadastrar Animal</a>
+        
+		{% for animal in animais %}
+		
+			<p>{{animal.nome}}</p>
+		
+		{% endfor %}
+
+    </body>
+</html>

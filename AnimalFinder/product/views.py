@@ -14,7 +14,10 @@ def cadastrar_animal(request):
     form = AnimalForm(data=request.POST, files=request.FILES)
 
     if form.is_valid():
-        form.save()
+        instance = form.save(commit=False)
+        instance.dono = request.user
+        instance.save()
+                
         return redirect('pagina_principal')
 
     return render(request, 'cadastrar_animal.html', {'form': form})
@@ -39,32 +42,40 @@ def cadastrar_dono(request):
     return render(request, 'cadastrar_dono.html', context)
 
 def logout_view(request):
-	logout(request)
-	return redirect('pagina_principal')
+    logout(request)
+    return redirect('pagina_principal')
+
+
+def meus_animais(request):
+    animals = [i for i in Animal.objects.all() if i.dono.email==request.user.email]
+    context = {'animais': animals}
+    return render(request, 'meus_animais.html', context)
+
+    
 
 def login_view(request):
 
-	 context = {}
+     context = {}
 
-	 user = request.user
-	 if user.is_authenticated:
-	 	return redirect("pagina_principal")
+     user = request.user
+     if user.is_authenticated:
+        return redirect("pagina_principal")
 
-	 if request.POST:
-	 	form = AuthenticationForm(request.POST)
-	 	if form.is_valid():
-	 		email = request.POST['email']
-	 		password = request.POST['password']
-	 		user = authenticate(email=email, password=password)
+     if request.POST:
+        form = AuthenticationForm(request.POST)
+        if form.is_valid():
+            email = request.POST['email']
+            password = request.POST['password']
+            user = authenticate(email=email, password=password)
 
-	 		if user:
-	 			login(request, user)
-	 			return redirect("pagina_principal")
+            if user:
+                login(request, user)
+                return redirect("pagina_principal")
 
-	 else:
-	 	form = AuthenticationForm()
+     else:
+        form = AuthenticationForm()
 
-	 context['form'] = form
-	 return render(request, 'login.html', context)
+     context['form'] = form
+     return render(request, 'login.html', context)
 
     

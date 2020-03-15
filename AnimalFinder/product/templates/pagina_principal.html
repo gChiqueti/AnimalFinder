@@ -1,16 +1,47 @@
+
+{% extends 'base.html' %}
+
+
+{% block css %}
+	<title>Animais cadastrados</title>
+		
+	{% load static %}
+	<link href="{% static 'pagina_principal.css' %}"  rel="stylesheet">
+{% endblock css %}        
+		
+{% block content %}
+	<h1>PAGINA PRINCIPAL</h1>
+			
+
+	{% for animal in animais_cadastrados %}
+		{% if animal.status == 1 %}
+			<div class="umAnimalPerdido">
+				
+				<div class="imagem">
+					{% if animal.foto%}
+						{% load static %}
+						<img src="{{ animal.foto.url }}" width=50%>
+					{% endif %}
+				</div>
+				
+				<div class="textos">
+					<p>Nome: {{animal.nome}}</p>
+					<p>Idade: {{animal.idade}}</p>
+					<p>Cidade: {{animal.cidade_desaparecimento}}</p>
+					<p>Estado: {{animal.estado_desaparecimento}}</p>
+					<p>Status: {{animal.status}}</p>
+					<button>Encontrei</button>
+				</div>
+				
+			</div>
+		{% endif %}	
+	{% endfor %}
+{% endblock content %}
+
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Animais cadastrados</title>
-		
-		{% load static %}
-        <link href="{% static 'pagina_principal.css' %}"  rel="stylesheet">
-        
-        
-    </head>
-    <body>
-        <h1>PAGINA PRINCIPALA</h1>
-        
+       
 		<ul class="menu_principal">
 			<li><a class="cadastrar_animal" href='cadastrar_animal'>Cadastrar animal perdido</a></li>
 			<li><a class="login" href='login'>Login</a></li>
@@ -18,33 +49,10 @@
 			<li><a class="cadastrar_dono" href='cadastrar_dono'>Registrar</a></li>
 		</ul>
 		
-		{% for animal in animais_cadastrados %}
-			{% if animal.status == 1 %}
-			
-				<div class="umAnimalPerdido">
-					
-					<div class="imagem">
-						{% if animal.foto%}
-							{% load static %}
-							<img src="{{ animal.foto.url }}" width=50%>
-						{% endif %}
-					</div>
-					
-					<div class="textos">
-						<p>Nome: {{animal.nome}}</p>
-						<p>Idade: {{animal.idade}}</p>
-						<p>Cidade: {{animal.cidade_desaparecimento}}</p>
-						<p>Estado: {{animal.estado_desaparecimento}}</p>
-						<p>Status: {{animal.status}}</p>
-						<button>Encontrei</button>
-					</div>
-					
-				</div>
-				
-			{% endif %}	
-			
-			<br>
-        {% endfor %}
+        
+    </head>
+    <body>
+       
         
         
        

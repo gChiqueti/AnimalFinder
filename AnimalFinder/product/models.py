@@ -2,8 +2,6 @@ from django.db import models
 from .choices import *
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
-
-
 class DonoManager(BaseUserManager):
     def create_user(self, email, username, password=None):
         if not email:
@@ -32,12 +30,11 @@ class DonoManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
+
 class Dono(AbstractBaseUser):
     email = models.EmailField(verbose_name="email", unique=True, max_length=100)
     username = models.CharField(max_length=100)
-    
-    telefone = models.CharField(max_length=20)
-    
+    telefone = models.CharField(max_length=20) 
     date_joined = models.DateTimeField(verbose_name="date_joined", auto_now_add=True)
     last_login = models.DateTimeField(verbose_name="last_login", auto_now=True)
     is_admin = models.BooleanField(default=False)
@@ -45,32 +42,39 @@ class Dono(AbstractBaseUser):
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
     
-    
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
     
     objects = DonoManager()
     
-    
     def __str__(self):
         return self.email
 
-	# For checking permissions. to keep it simple all admin have ALL permissons
     def has_perm(self, perm, obj=None):
         return self.is_admin
 
-	# Does this user have permission to view this app? (ALWAYS YES FOR SIMPLICITY)
     def has_module_perms(self, app_label):
         return True
-    
+  
+  
 class Animal(models.Model):
     foto  = models.ImageField(blank=True)
     nome  = models.CharField(max_length=100, blank=True)
     idade = models.CharField(max_length=3, blank=True)
     cidade_desaparecimento = models.CharField(max_length=50, blank=True)
     estado_desaparecimento = models.CharField(max_length=50, blank=True)
-    status = models.IntegerField(choices=STATUS_ANIMAL, default=1)
+    status = models.IntegerField(choices=STATUS_ANIMAL, default=1)  
+    dono = models.ForeignKey(Dono, on_delete=models.CASCADE,  null=True)
+    
     
     def __str__(self):
         return self.nome
+        
+
+class Contato(models.Model):
+    nome = models.CharField(max_length=100, blank=True)
+    telefone = models.CharField(max_length=20, blank=True)
+    animal = models.ForeignKey(Animal, on_delete=models.CASCADE, null=True)
     
+    def __str__(self):
+        return self.nome    
