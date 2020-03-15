@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<br>
+    <h2>{{user.nome}}</h2>
+    <form method="post">
+        {% csrf_token %}
+        <p>Deseja deletar o cadastro deste animal?</p>
+        <input type="submit" value="Yes">
+    </form>
+{% endblock content %}

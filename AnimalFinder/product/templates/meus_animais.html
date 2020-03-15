@@ -1,25 +1,20 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport"
-			  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<title>Cadastro</title>
-		
+{% extends 'base.html' %}
+
+
+{% block css %}
 		{% load static %}
         <link href="{% static 'cadastrar_animal.css' %}"  rel="stylesheet">
+{% endblock css %}		
 		
-		
-	</head>
-    <body>
+{% block content %}
         <a href="{% url 'cadastrar_animal' %}">Cadastrar Animal</a>
         
 		{% for animal in animais %}
 		
 			<p>{{animal.nome}}</p>
+			<a class="btn btn-warning" href="{%  url 'animal_edit' animal.id %}">Edit</a>
+            <a class="btn btn-danger" href="{%  url 'animal_delete' animal.id %}">Delete</a>
 		
 		{% endfor %}
 
-    </body>
-</html>
+{% endblock content %}

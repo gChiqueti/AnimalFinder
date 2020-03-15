@@ -2,12 +2,14 @@ from django.urls import path
 
 from django.conf.urls.static import static
 from django.conf import settings
-from .views import cadastrar_animal, cadastrar_dono, pagina_principal, login_view, logout_view, meus_animais
+from .views import cadastrar_animal, cadastrar_dono, pagina_principal, login_view, logout_view, meus_animais, animal_edit, animal_delete
 
 urlpatterns = [
     path('cadastrar_animal', cadastrar_animal, name='cadastrar_animal'),
     path('cadastrar_dono', cadastrar_dono, name='cadastrar_dono'),
     path('meus_animais', meus_animais, name='meus_animais'),
+    path('<int:id>/edit', animal_edit, name="animal_edit"),
+    path('<int:id>/delete', animal_delete, name="animal_delete"),
     path('', pagina_principal, name='pagina_principal'),
     path('login', login_view, name='login'),
     path('logout', logout_view, name='logout'),
