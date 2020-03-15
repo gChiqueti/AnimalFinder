@@ -1,0 +1,77 @@
+h1{
+    color: red;
+    text-shadow: 3px 3px 5px black;
+    text-align: center;
+}
+
+html{
+	margin: 0px;
+	
+	
+}
+
+thead {
+	color:green;
+}
+
+table, th, td {
+	border: 1px solid black;
+}
+
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li p {
+	padding: 0px 14px 0px 16px;
+	color: white;
+	}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+}
+
+
+.umAnimalPerdido{
+	overflow: auto;
+	border-style: solid;
+	border-color: black;
+	height: 250px;
+}
+
+.imagem{
+	display:inline-block;
+	max-width: 50%;
+	float: left;
+}
+
+.textos{
+	display:inline-block;
+	width: 50%;
+	float:rigth;
+	background-color: yellow;
+}
+
+
+
+
+

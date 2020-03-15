@@ -2,23 +2,52 @@
 
 
 {% block css %}
-		{% load static %}
-        <link href="{% static 'cadastrar_animal.css' %}"  rel="stylesheet">
+
 {% endblock css %}		
 		
 {% block content %}
         <a href="{% url 'cadastrar_animal' %}">Cadastrar Animal</a>
-        
+        <table>
+		<thead>
+			<tr>
+			  <th>Nome</th>
+			  <!--<th>Foto</th>-->
+			  <th>Status</th>
+			  <th>Lista de contatos</th>
+			  <th>Editar cadastro</th>
+			  <th>Deletar cadastro</th>
+			  
+			</tr>
+		</thead>
+		<tbody>
+
 		{% for animal, contatos in animais %}
-		
-			{{animal.status}}
+		<tr>
+			<td>{{animal.nome}}</td>
+			<!--<td>
+			{% load static %}
+			<img src="{{ animal.foto.url }}" width=50%>
+			</td>-->
+			<td>
+			{{animal.get_status_display}}
+			</td>			
+			<td>
 			{% for contato in contatos %}
 				{{contato.nome}}
-			
+				{{contato.telefone}}
+				<br>
 			{% endfor %}
-			<a class="btn btn-warning" href="{%  url 'animal_edit' animal.id %}">Edit</a>
-            <a class="btn btn-danger" href="{%  url 'animal_delete' animal.id %}">Delete</a>
-		
+			</td>
+
+			<td><a class="btn btn-warning" href="{%  url 'animal_edit' animal.id %}">Edit</a>
+            </td>
+			<td><a class="btn btn-danger" href="{%  url 'animal_delete' animal.id %}">Delete</a>
+			</td>
+		</tr>
 		{% endfor %}
+		
+
+		</tbody>
+		</table>
 
 {% endblock content %}
