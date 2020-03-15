@@ -9,9 +9,13 @@
 {% block content %}
         <a href="{% url 'cadastrar_animal' %}">Cadastrar Animal</a>
         
-		{% for animal in animais %}
+		{% for animal, contatos in animais %}
 		
-			<p>{{animal.nome}}</p>
+			{{animal.status}}
+			{% for contato in contatos %}
+				{{contato.nome}}
+			
+			{% endfor %}
 			<a class="btn btn-warning" href="{%  url 'animal_edit' animal.id %}">Edit</a>
             <a class="btn btn-danger" href="{%  url 'animal_delete' animal.id %}">Delete</a>
 		

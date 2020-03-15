@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Dono, Animal
+from .models import Dono, Animal, Contato
 from .forms import AnimalForm, RegistrationForm, AuthenticationForm, ContatoForm
 from .forms import AnimalForm, RegistrationForm, AuthenticationForm, ContatoForm
 from django.contrib.auth import login, authenticate, logout
@@ -51,7 +51,10 @@ def logout_view(request):
 
 def meus_animais(request):
     animals = [i for i in Animal.objects.all() if i.dono.email==request.user.email]
-    context = {'animais': animals}
+    contatos = []
+    for a in animals:
+        contatos.append(Contato.objects.filter(animal__id=a.id))
+    context = {'animais': zip(animals, contatos) }
     return render(request, 'meus_animais.html', context)
 
 def animal_edit(request, id=None):
@@ -85,6 +88,8 @@ def animal_encontrado(request, id=None):
         form = ContatoForm(request.POST)
         if form.is_valid():
             instance = form.save(commit=False)
+            animal.status = 2
+            animal.save()
             instance.animal = animal
             instance.save()    
             return redirect('pagina_principal')
