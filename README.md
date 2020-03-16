@@ -22,7 +22,7 @@ Execução:
 
 Banco de dados:
 
-O site vem com alguns animais e dono pré-cadastrados com o objetivo de verificar as validades exigidas.
+O site vem com alguns animais e donos pré-cadastrados com o objetivo de verificar os critérios.
 
 Usuários cadastrados:
 - Email= a@gmail.com   senha: a
