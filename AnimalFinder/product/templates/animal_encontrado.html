@@ -9,11 +9,12 @@
 {% endblock css %}        
 		
 {% block content %}
-	<h1>PAGINA PRINCIPAL</h1>
+		<h1>DADOS PARA CONTATO</h1>
 			
         <form method="post">
 			{% csrf_token %}
-            {{form.as_table}}
+			<p>Nome:<br>{{form.nome}}</p>
+			<p>Telefone:<br>{{form.telefone}}</p>
 			<button type="submit" class="btn btn-warning float-right">Enviar contato para o dono</button>
         </form>
         

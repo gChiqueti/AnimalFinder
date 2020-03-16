@@ -60,12 +60,12 @@ class Dono(AbstractBaseUser):
   
   
 class Animal(models.Model):
-    foto  = models.ImageField(blank=True)
-    nome  = models.CharField(max_length=100, blank=True)
+    foto  = models.ImageField()
+    nome  = models.CharField(max_length=100)
     idade = models.CharField(max_length=3, blank=True)
-    cidade_desaparecimento = models.CharField(max_length=50, blank=True)
-    estado_desaparecimento = models.CharField(max_length=50, blank=True)
-    status = models.IntegerField(choices=STATUS_ANIMAL, default=1)  
+    cidade_desaparecimento = models.CharField(max_length=50)
+    estado_desaparecimento = models.CharField(max_length=50)
+    status = models.IntegerField(choices=STATUS_ANIMAL, default=1, blank=True)  
     dono = models.ForeignKey(Dono, on_delete=models.CASCADE,  null=True)
     informacoes_extras = models.CharField(max_length=250, blank=True)
     
@@ -78,8 +78,8 @@ def submission_delete(sender, instance, **kwargs):
     instance.foto.delete(False)   
 
 class Contato(models.Model):
-    nome = models.CharField(max_length=100, blank=True)
-    telefone = models.CharField(max_length=20, blank=True)
+    nome = models.CharField(max_length=100)
+    telefone = models.CharField(max_length=20)
     animal = models.ForeignKey(Animal, on_delete=models.CASCADE, null=True)
     
     def __str__(self):

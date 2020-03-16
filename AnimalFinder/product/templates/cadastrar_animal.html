@@ -17,10 +17,10 @@
 				{% csrf_token %}
 				<p>Foto:<br>{{form.foto}}</p>
 				<p>Nome do animal:<br>{{form.nome}}</p>
-				<p>Idade:<br>{{form.idade}}</p>
+				<p>Idade (opcional):<br>{{form.idade}}</p>
 				<p>Cidade de desaparecimento:<br>{{form.cidade_desaparecimento}}</p>
 				<p>Estado de desaparecimento:<br>{{form.estado_desaparecimento}}</p>
-				<p>Informações adicionais:<br>{{form.informacoes_extras}}</p>
+				<p>Informações adicionais (opcional):<br>{{form.informacoes_extras}}</p>
 
 				{% for field in registration_form %}
 					{% for error in field.errors %}

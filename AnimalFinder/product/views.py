@@ -23,14 +23,15 @@ def pagina_principal(request):
     
 def cadastrar_animal(request):
     form = AnimalForm(data=request.POST, files=request.FILES)
-
+    print('ok')
     if form.is_valid():
+        print('ok2')
         instance = form.save(commit=False)
         instance.dono = request.user
         instance.save()
                 
-        return redirect('pagina_principal')
-
+        return redirect('meus_animais')
+    print('ok3')
     return render(request, 'cadastrar_animal.html', {'form': form})
 
 

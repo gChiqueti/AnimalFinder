@@ -6,7 +6,12 @@
 {% endblock css %}		
 		
 {% block content %}
-        <a href="{% url 'cadastrar_animal' %}">Cadastrar Animal</a>
+		<br>
+		<form action="{%  url 'cadastrar_animal' %}">
+			<input type="submit" value="Cadastrar novo animal" />
+		</form>
+		<br>
+
         <table border="1" width="100%">
 		<thead>
 			<tr>
