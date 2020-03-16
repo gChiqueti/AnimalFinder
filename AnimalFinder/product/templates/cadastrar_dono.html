@@ -12,13 +12,14 @@
 {% block content %}
 	<div class="login">
 		<h1>Registrar</h1>
-
+		
 		<form method="post">
-			<p>Email:<br>{% csrf_token %}{{registration_form.email}}</p>
-			<p>Usuário:<br>{% csrf_token %}{{registration_form.username}}</p>
-			<p>Telefone:<br>{% csrf_token %}{{registration_form.telefone}}</p>
-			<p>Senha:<br>{% csrf_token %}{{registration_form.password1}}</p>
-			<p>Confirmação de senha:<br>{% csrf_token %}{{registration_form.password2}}</p>
+			{% csrf_token %}
+			<p>Email:<br>{{registration_form.email}}</p>
+			<p>Usuário:<br>{{registration_form.username}}</p>
+			<p>Telefone:<br>{{registration_form.telefone}}</p>
+			<p>Senha:<br>{{registration_form.password1}}</p>
+			<p>Confirmação de senha:<br>{{registration_form.password2}}</p>
 			
 			{% for field in registration_form %}
 				{% for error in field.errors %}

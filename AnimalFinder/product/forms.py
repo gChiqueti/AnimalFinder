@@ -33,7 +33,7 @@ class RegistrationForm(UserCreationForm):
         
 class AuthenticationForm(forms.ModelForm):
 
-	password = forms.CharField(label='Password', widget=forms.PasswordInput)
+	password = forms.CharField(label='password', widget=forms.PasswordInput)
 
 	class Meta:
 		model = Dono

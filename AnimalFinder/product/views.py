@@ -122,8 +122,7 @@ def login_view(request):
             email = request.POST['email']
             password = request.POST['password']
             user = authenticate(email=email, password=password)
-
-            if user:
+            if user is not None:
                 login(request, user)
                 return redirect("pagina_principal")
 

@@ -3,7 +3,7 @@
 
 
 {% block css %}			
-		<title>Cadastro</title>
+		<title>Login</title>
 		
 		{% load static %}
         <link href="{% static 'login.css' %}"  rel="stylesheet">
@@ -12,10 +12,18 @@
 {% block content %}
 	<div class="login">
 		  <h1>Login</h1>
-		  <form method="post" action="">
-				<p>Email<br>{% csrf_token %}{{ form.email }}</p>
-				<p>Senha<br>{% csrf_token %}{{ form.password }} </p>
+		  
+		  <form method="post">
+				{% csrf_token %}
+				<p>Email<br>{{ form.email }}</p>
+				<p>Senha<br>{{ form.password }} </p>
 				
+				
+				{% for field in form %}
+					{% for error in field.errors %}
+						<p style="color: red;">{{error}}</p>
+					{% endfor %}
+				{% endfor %}
 				<br>
 				<button type="submit" class="submit">Login</button>
 		  </form>

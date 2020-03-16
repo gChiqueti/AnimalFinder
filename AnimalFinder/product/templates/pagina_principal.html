@@ -28,8 +28,10 @@
 					<p>Idade: {{animal.idade}}</p>
 					<p>Cidade: {{animal.cidade_desaparecimento}}</p>
 					<p>Estado: {{animal.estado_desaparecimento}}</p>
-					<p>Status: {{animal.status}}</p>
-					<a href="{%  url 'animal_encontrado' animal.id %}">Encontrei</a>
+					<p>Informações: {{animal.informacoes_extras}}</p>
+					<form action="{%  url 'animal_encontrado' animal.id %}">
+						<input type="submit" value="Encontrei" />
+					</form>
 				</div>
 				
 			</div>
