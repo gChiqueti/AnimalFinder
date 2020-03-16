@@ -11,7 +11,7 @@ from django.core.serializers import serialize
 def pagina_principal(request):
     animais_cadastrados = Animal.objects.all()
     page = request.GET.get('page', 1)
-    paginator = Paginator(animais_cadastrados, 8)
+    paginator = Paginator(animais_cadastrados, 5)
     try:
         animais_cadastrados = paginator.page(page)
     except PageNotAnInteger:
