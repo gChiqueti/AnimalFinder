@@ -10,15 +10,14 @@ Instalação em Linux:
 
 como administrador, instale as dependências:
 
-- (para instalar o python 3): apt-get install python3
-- (para intalar o django): pip (ou pip3) install django
+- (para instalar o python 3): **sudo apt-get install python3**
+- (para intalar o django): **pip install django** ou **pip3 install django** dependendo da instalação do seu python3
 
 Execução:
 
 - Clone o repositório para o seu computador, descompacte se necessário
 - Vá para a pasta que contém o arquivo manage.py
-- Execute o comando:
---	python (ou python3) manage.py runserver
+- Execute o comando: **python manage.py runserver** ou **python3 manage.py runserver** dependendo da instalação do seu python3
 - aba um navegador e acesse 127.0.0.1:8000
 
 
