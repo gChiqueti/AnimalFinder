@@ -5,18 +5,21 @@
 {% block css %}
 	<title>Animais cadastrados</title>
 		
-
+	{% load static %}
+    <link href="{% static 'login.css' %}"  rel="stylesheet">
 {% endblock css %}        
 		
 {% block content %}
+	<div class="insert_data">
 		<h1>DADOS PARA CONTATO</h1>
 			
         <form method="post">
 			{% csrf_token %}
 			<p>Nome:<br>{{form.nome}}</p>
 			<p>Telefone:<br>{{form.telefone}}</p>
+			<br>
 			<button type="submit" class="btn btn-warning float-right">Enviar contato para o dono</button>
         </form>
-        
+    </div>    
 
 {% endblock content %}

@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.serializers import serialize
+from django.contrib.auth.decorators import login_required
 
 
 def pagina_principal(request):
@@ -20,7 +21,7 @@ def pagina_principal(request):
         animais_cadastrados = paginator.page(paginator.num_pages)
     return render(request, 'pagina_principal.html', {'animais_cadastrados': animais_cadastrados})
     
-    
+@login_required   
 def cadastrar_animal(request):
     form = AnimalForm(data=request.POST, files=request.FILES)
     print('ok')
@@ -53,11 +54,12 @@ def cadastrar_dono(request):
         context['registration_form'] = form
     return render(request, 'cadastrar_dono.html', context)
 
+@login_required
 def logout_view(request):
     logout(request)
     return redirect('pagina_principal')
 
-
+@login_required
 def meus_animais(request):
     animals = [i for i in Animal.objects.all() if i.dono.email==request.user.email]
     contatos = []
@@ -66,6 +68,7 @@ def meus_animais(request):
     context = {'animais': zip(animals, contatos) }
     return render(request, 'meus_animais.html', context)
 
+@login_required
 def animal_edit(request, id=None):
     animal = get_object_or_404(Animal, id=id)
     if request.method == 'POST':
@@ -78,7 +81,8 @@ def animal_edit(request, id=None):
     else:
         user_form = AnimalForm(instance=animal)
         return render(request, 'editar_animal.html', {"user_form": user_form})
-    
+
+@login_required    
 def animal_delete(request, id=None):
     animal = get_object_or_404(Animal, id=id)
     if request.method == 'POST':
