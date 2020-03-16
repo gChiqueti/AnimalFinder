@@ -3,6 +3,7 @@ from .models import Dono, Animal, Contato
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate
 
+
 class AnimalForm(forms.ModelForm):
     class Meta:
         model = Animal
@@ -44,5 +45,4 @@ class AuthenticationForm(forms.ModelForm):
 			password = self.cleaned_data['password']
 			if not authenticate(email=email, password=password):
 				raise forms.ValidationError("Invalid login")
-
 

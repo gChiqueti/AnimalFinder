@@ -1,15 +1,24 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Login</title>       
-    </head>
-    <body>
-          <h2>Login</h2>
-		  <form method="post">
-			{% csrf_token %}
-			{{ form.as_p }}
-			<button type="submit">Login</button>
+{% extends 'base.html' %}
+
+
+
+{% block css %}			
+		<title>Cadastro</title>
+		
+		{% load static %}
+        <link href="{% static 'login.css' %}"  rel="stylesheet">
+{% endblock css %}		
+		
+{% block content %}
+	<div class="login">
+		  <h1>Login</h1>
+		  <form method="post" action="">
+				<p>Email<br>{% csrf_token %}{{ form.email }}</p>
+				<p>Senha<br>{% csrf_token %}{{ form.password }} </p>
+				
+				<br>
+				<button type="submit" class="submit">Login</button>
 		  </form>
+	</div>
         
-    </body>
-</html>
+{% endblock content %}

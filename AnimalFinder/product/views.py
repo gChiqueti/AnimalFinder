@@ -1,13 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Dono, Animal, Contato
 from .forms import AnimalForm, RegistrationForm, AuthenticationForm, ContatoForm
-from .forms import AnimalForm, RegistrationForm, AuthenticationForm, ContatoForm
 from django.contrib.auth import login, authenticate, logout
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.serializers import serialize
 
-# Create your views here.
 
 def pagina_principal(request):
     animais_cadastrados = Animal.objects.all()
@@ -109,7 +108,6 @@ def animal_encontrado(request, id=None):
     return render(request, 'animal_encontrado.html', context)
 
 
-
 def login_view(request):
 
      context = {}
@@ -135,4 +133,9 @@ def login_view(request):
      context['form'] = form
      return render(request, 'login.html', context)
 
-    
+
+
+# Retorna os dados de todos os animais no formato json
+def get_animals_in_json_format():
+    data = serialize('json', Animal.objects.all())
+    return data
