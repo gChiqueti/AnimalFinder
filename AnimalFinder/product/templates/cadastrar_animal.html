@@ -4,21 +4,31 @@
 
 {% block css %}			
 		<title>Cadastro</title>
+		
+		{% load static %}
+        <link href="{% static 'login.css' %}"  rel="stylesheet">
 {% endblock css %}		
 		
 {% block content %}
-        <h1>Cadastro de animal desaparecido</h1>
-        
+		<div class="insert_data">
+			<h1>Cadastro de animal desaparecido</h1>
 
-        {% load static %}
-		<img class="container_kermit_img" src="{% static 'images/viralata_1.jpg' %}" alt="Kermit the frog" width="300">
-		<br><br><br>
-        
-		<form method="POST" enctype="multipart/form-data">
-			{% csrf_token %}
-			{{ form }}
-			
-			<button type="submit">Cadastrar</button>
-		</form>
+			<form method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				<p>Foto:<br>{{form.foto}}</p>
+				<p>Nome do animal:<br>{{form.nome}}</p>
+				<p>Idade:<br>{{form.idade}}</p>
+				<p>Cidade de desaparecimento:<br>{{form.cidade_desaparecimento}}</p>
+				<p>Estado de desaparecimento:<br>{{form.estado_desaparecimento}}</p>
+				<p>Informações adicionais:<br>{{form.informacoes_extras}}</p>
 
+				{% for field in registration_form %}
+					{% for error in field.errors %}
+						<p style="color: red;">{{error}}</p>
+					{% endfor %}
+				{% endfor %}
+				<br>
+				<button type="submit">Cadastrar animal</button>
+			</form>
+		</div>
 {% endblock content %}

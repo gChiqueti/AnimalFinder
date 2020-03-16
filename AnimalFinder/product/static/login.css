@@ -8,7 +8,7 @@
  */
 
 
-.login {
+.insert_data {
   position: relative;
   margin: 30px auto;
   padding: 20px 20px 20px;
@@ -19,7 +19,7 @@
   box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-.login:before {
+.insert_data:before {
   content: '';
   position: absolute;
   top: -8px;
@@ -31,7 +31,7 @@
   border-radius: 4px;
 }
 
-.login h1 {
+.insert_data h1 {
   margin: -20px -20px 21px;
   line-height: 40px;
   font-size: 15px;
@@ -50,25 +50,25 @@
   box-shadow: 0 1px whitesmoke;
 }
 
-.login p {
+.insert_data p {
   margin: 20px 0 0;
 }
 
-.login p:first-child {
+.insert_data p:first-child {
   margin-top: 0;
 }
 
-.login input[type=email], .login input[type=password] {
+.insert_data input {
   width: 278px;
 }
 
-input[type=email]:focus, input[type=password]:focus {
+insert_data:focus {
   border-color: #7dc9e2;
   outline-color: #dceefc;
   outline-offset: 0;
 }
 
-.login p.submit {
+.insert_data p.submit {
   text-align: right;
 }
 
