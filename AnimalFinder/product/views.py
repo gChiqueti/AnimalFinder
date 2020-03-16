@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Dono, Animal, Contato
 from .forms import AnimalForm, RegistrationForm, AuthenticationForm, ContatoForm
 from django.contrib.auth import login, authenticate, logout
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.serializers import serialize
@@ -140,6 +140,5 @@ def login_view(request):
 
 
 # Retorna os dados de todos os animais no formato json
-def get_animals_in_json_format():
-    data = serialize('json', Animal.objects.all())
-    return data
+def get_animals_in_json_format(request):
+    return JsonResponse(list(Animal.objects.filter(status=1).values()), safe=False)

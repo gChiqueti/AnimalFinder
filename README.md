@@ -34,3 +34,7 @@ Usuário administrador: para acessar o banco de dados como administrador (apenas
 
 email: **guilherme.chiqueti@gmail.com**
 senha: **admin**
+
+API JSON:
+
+para visualizar o formato json de todos os animais perdidos, basta enviar um request do tipo GET para **127.0.0.1:8000/animaljson** ou apenas acessar via browser
